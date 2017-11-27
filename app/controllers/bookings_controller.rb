@@ -5,20 +5,26 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     @bookings = Booking.all
+    @rooms = Room.all
   end
 
   # GET /bookings/1
   # GET /bookings/1.json
   def show
+    @bookings = Booking.all
+    @rooms = Room.all
   end
 
   # GET /bookings/new
   def new
+    @rooms = Room.all
     @booking = Booking.new
+    @users = User.all
   end
 
   # GET /bookings/1/edit
   def edit
+
   end
 
   # POST /bookings
