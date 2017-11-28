@@ -3,5 +3,4 @@ Rails.application.routes.draw do
   resources :bookings, :rooms
   root to: 'rooms#index'
 
-  get '/home', to: 'bookings#home'
 end
