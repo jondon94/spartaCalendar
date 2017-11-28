@@ -3,10 +3,16 @@
 <h1>Today's Bookings</h1>
 <%= link_to 'New Booking', new_booking_path %>
 
-
-<h2><%= @date %></h2>
 <table>
-  <% @bookings.each do |booking| %>
+
+<tr>
+
+  <td><h2><%= @selected_date.yesterday().to_formatted_s(:long) %></h2></td>
+  <td><h2><%= @selected_date.to_formatted_s(:long) %></h2></td>
+  <td><h2><%= @selected_date.tomorrow().to_formatted_s(:long) %></h2></td>
+</tr>
+</table>
+<table>
   <thead>
     <tr>
       <th>Room</th>
@@ -17,6 +23,7 @@
     </tr>
   </thead>
   <tbody>
+    <% @bookings.each do |booking| %>
         <tr>
           <td><%= booking.room.room_name %></td>
           <td><%= booking.start_time.strftime("%H:%M") %></td>
@@ -26,8 +33,8 @@
           <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
           <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
+      <% end %>
   </tbody>
-  <% end %>
 </table>
 
 <br>
