@@ -8,11 +8,6 @@ class BookingsController < ApplicationController
     @rooms = Room.all
   end
 
-
-  def home
-    @bookings = Booking.all
-  end
-
   # GET /bookings/1
   # GET /bookings/1.json
   def show
