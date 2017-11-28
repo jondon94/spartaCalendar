@@ -26,7 +26,6 @@ class BookingsController < ApplicationController
 
   # GET /bookings/1/edit
   def edit
-
   end
 
   # POST /bookings
