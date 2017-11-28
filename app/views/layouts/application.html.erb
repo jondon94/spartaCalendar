@@ -3,16 +3,25 @@
   <head>
     <title>SpartaCalendar</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <nav>
-      <%= link_to 'Rooms', rooms_path %>
-      <%= link_to 'Bookings', bookings_path %>
-    </nav>
-    <%= yield %>
+    <div class="col-lg-12">
+
+      <div class="col-lg-12">
+        <nav class="label label-danger">
+          <%= link_to 'Rooms', rooms_path %>
+        </nav>
+        <nav class="label label-success">
+          <%= link_to 'Bookings', bookings_path %>
+        </nav>
+
+      </div>
+      <div class="col-lg-">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
