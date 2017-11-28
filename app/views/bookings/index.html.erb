@@ -1,26 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Bookings</h1>
+<h1>Today's Bookings</h1>
+<%= link_to 'New Booking', new_booking_path %>
+
 
 
 <table>
   <thead>
     <tr>
+      <th>Room</th>
       <th>Start time</th>
       <th>Finish time</th>
       <th>Description</th>
-      <th>Room Name</th>
-      <th colspan="5"></th>
+      <th colspan="5">Options</th>
     </tr>
   </thead>
 
   <tbody>
     <% @bookings.each do |booking| %>
       <tr>
-        <td><%= booking.start_time %></td>
-        <td><%= booking.finish_time %></td>
-        <td><%= booking.description %></td>
         <td><%= booking.room.room_name %></td>
+        <td><%= booking.start_time.strftime("%H:%M") %></td>
+        <td><%= booking.finish_time.strftime("%H:%M") %></td>
+        <td><%= booking.description %></td>
         <td><%= link_to 'Show', booking %></td>
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,4 +33,42 @@
 
 <br>
 
-<%= link_to 'New Booking', new_booking_path %>
+<p id="notice"><%= notice %></p>
+
+<h1>Rooms</h1>
+<%= link_to 'New Room', new_room_path %>
+
+
+
+<% @rooms.each do |room| %>
+<br>
+<h3>
+  <%= room.room_name %>
+</h3>
+<table>
+  <thead>
+    <tr>
+      <td><h4>Start Time</h4></td>
+      <td><h4>Finish Time</h4></td>
+      <td><h4>Description</h4></td>
+      <td colspan="5"><h4>Options</h4></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% room.bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.start_time.strftime("%H:%M") %></td>
+        <td><%= booking.finish_time.strftime("%H:%M") %></td>
+        <td><%= booking.description %></td>
+        <td><%= link_to 'Show', booking %></td>
+        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<% end %>
+
+<br>
