@@ -4,8 +4,10 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = Booking.all
+    # @bookings = Booking.all
     @rooms = Room.all
+    @selected_date = DateTime.now
+    @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)
   end
 
   # GET /bookings/1
@@ -33,7 +35,7 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to @booking, notice: 'Booking was successfully created.' }
+        format.html { redirect_to bookings_path, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: @booking }
       else
         format.html { render :new }
