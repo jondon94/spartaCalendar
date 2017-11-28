@@ -35,17 +35,33 @@
 
 <h1>Rooms</h1>
 
+
+<% @rooms.each do |room| %>
+<br>
+<h3>
+  <%= room.room_name %>
+</h3>
 <table>
-    <% @rooms.each do |room| %>
-      <h4><%= room.room_name %></h4>
-      <ul>
-        <% room.bookings.each do |booking| %>
-          <li><%= booking.description %></li>
-          <li><%= booking.start_time.strftime("%H:%M") %></li>
-          <li><%= booking.finish_time.strftime("%H:%M") %></li>
-        <% end %>
-      </ul>
-    <% end %>
+  <thead>
+    <tr>
+      <td><h4>Start Time</h4></td>
+      <td><h4>Finish Time</h4></td>
+      <td><h4>Description</h4></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% room.bookings.each do |booking| %>
+      <tr>
+        <td><%= booking.start_time.strftime("%H:%M") %></td>
+        <td><%= booking.finish_time.strftime("%H:%M") %></td>
+        <td><%= booking.description %></td>
+      </tr>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
+<% end %>
 
 <br>
 
