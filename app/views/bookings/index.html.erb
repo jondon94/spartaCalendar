@@ -6,6 +6,7 @@
 
 
 <table>
+  <% @bookings.each do |booking| %>
   <thead>
     <tr>
       <th>Room</th>
@@ -15,9 +16,7 @@
       <th colspan="5">Options</th>
     </tr>
   </thead>
-
   <tbody>
-    <% @bookings.each do |booking| %>
       <tr>
         <td><%= booking.room.room_name %></td>
         <td><%= booking.start_time.strftime("%H:%M") %></td>
@@ -27,8 +26,8 @@
         <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
         <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
-    <% end %>
   </tbody>
+  <% end %>
 </table>
 
 <br>
