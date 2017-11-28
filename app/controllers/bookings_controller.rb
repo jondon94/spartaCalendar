@@ -18,6 +18,9 @@ class BookingsController < ApplicationController
   def show
     @bookings = Booking.all
     @rooms = Room.all
+     @bookings.each do |booking|
+      @date = booking.start_time 
+     end
   end
 
   # GET /bookings/new
