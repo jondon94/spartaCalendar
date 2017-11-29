@@ -43,6 +43,7 @@
 <table>
   <thead>
     <tr>
+      <td><h4>Date</h4></td>
       <td><h4>Start Time</h4></td>
       <td><h4>Finish Time</h4></td>
       <td><h4>Description</h4></td>
@@ -53,6 +54,7 @@
     <tr>
       <% room.bookings.each do |booking| %>
       <tr>
+        <td><%= booking.start_time.strftime("%d %B") %></td>
         <td><%= booking.start_time.strftime("%H:%M") %></td>
         <td><%= booking.finish_time.strftime("%H:%M") %></td>
         <td><%= booking.description %></td>
