@@ -45,7 +45,6 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
 
-
     respond_to do |format|
       if @booking.save
         format.html { redirect_to bookings_path, notice: 'Booking was successfully created.' }
@@ -89,6 +88,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:start_time, :finish_time, :description, :room_id, :room_name)
+      params.permit(:start_time, :finish_time, :description, :room_id, :room_name)
     end
 end

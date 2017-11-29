@@ -7,7 +7,7 @@
 
     <%= form.label :room_id %>
     <%= form.collection_select(:room_id, Room.all, :id, :room_name) %>
-    
+
     <%= form.label :description %>
     <%= form.text_area :description, id: :booking_description %>
   </div>
