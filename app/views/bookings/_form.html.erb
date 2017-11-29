@@ -1,18 +1,20 @@
 <%= form_with(model: booking, local: true) do |form| %>
 
 
-  <div class="field">
+  <div class="">
     <%= form.label :start_time %>
     <%= form.datetime_select :start_time, id: :booking_start_time, minute_step: 15 %>
 
-    <%= form.label :finish_time %>
-    <%= form.datetime_select :finish_time, id: :booking_finish_time, minute_step: 15 %>
-
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :booking_description %>
-
     <%= form.label :room_id %>
     <%= form.collection_select(:room_id, Room.all, :id, :room_name) %>
+    
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :booking_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :finish_time %>
+    <%= form.datetime_select :finish_time, id: :booking_finish_time, minute_step: 15 %>
   </div>
 
   <div class="actions">
