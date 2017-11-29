@@ -1,17 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Today's Bookings</h1>
+<h1>Today's Bookings</h1><br>
+<h2><%= @selected_date.strftime("%A, %d %B") %></h2>
 <%= link_to 'New Booking', new_booking_path %>
 
-<table>
-
-<tr>
-
-  <td><h2><%= @selected_date.yesterday().to_formatted_s(:long) %></h2></td>
-  <td><h2><%= @selected_date.to_formatted_s(:long) %></h2></td>
-  <td><h2><%= @selected_date.tomorrow().to_formatted_s(:long) %></h2></td>
-</tr>
-</table>
+<h2><%= @date %></h2>
 <table>
   <thead>
     <tr>
@@ -36,15 +29,11 @@
       <% end %>
   </tbody>
 </table>
-
 <br>
-
 <p id="notice"><%= notice %></p>
 
-<h1>Rooms</h1>
+<h1>All Rooms & Bookings</h1>
 <%= link_to 'New Room', new_room_path %>
-
-
 
 <% @rooms.each do |room| %>
 <br>
@@ -54,6 +43,7 @@
 <table>
   <thead>
     <tr>
+      <td><h4>Date</h4></td>
       <td><h4>Start Time</h4></td>
       <td><h4>Finish Time</h4></td>
       <td><h4>Description</h4></td>
@@ -64,6 +54,7 @@
     <tr>
       <% room.bookings.each do |booking| %>
       <tr>
+        <td><%= booking.start_time.strftime("%d %B") %></td>
         <td><%= booking.start_time.strftime("%H:%M") %></td>
         <td><%= booking.finish_time.strftime("%H:%M") %></td>
         <td><%= booking.description %></td>
