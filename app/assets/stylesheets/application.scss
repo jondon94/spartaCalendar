@@ -27,7 +27,15 @@ nav {
   display: inline-block;
 }
 
-.hidden {
-  display:none;
-  margin-top: 55px;
+.panel {
+  background-color: #222;
+  color: #9d9d9d;
+  border-width: 0px;
+  font-weight: lighter;
+  font-size: 18px;
+  padding-top: 7px;
+}
+
+.changelater {
+  display: none;
 }

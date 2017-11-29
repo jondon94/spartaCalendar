@@ -17,3 +17,6 @@
 //= require moment
 //= require fullcalendar
 //= require_tree .
+
+
+animate the button to dipslay form

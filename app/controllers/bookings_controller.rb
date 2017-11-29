@@ -5,6 +5,8 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   def index
     # @bookings = Booking.all
+    @booking = Booking.new
+    @room = Room.new
     @rooms = Room.all
     @selected_date = DateTime.now
     @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)
@@ -32,6 +34,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
+    
 
     respond_to do |format|
       if @booking.save
