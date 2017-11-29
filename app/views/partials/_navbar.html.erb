@@ -1,13 +1,21 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mainNav">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
-    <a class="navbar-brand js-scroll-trigger" href="#page-top">Top</a>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="http://localhost:3000/bookings">Bookings</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="http://localhost:3000/rooms">Rooms</a>
-        </li>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Room Booker</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="/bookings">Bookings</a></li>
+        <li><a href="/rooms">Rooms</a></li>
       </ul>
+      <ul class="nav navbar-nav navbar-right">
+      </ul>
+    </div><!--/.nav-collapse -->
   </div>
 </nav>
