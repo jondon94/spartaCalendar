@@ -6,13 +6,8 @@
 
 <%= month_calendar events: @bookings do |date, bookings| %>
   <%= date %>
-  <%= bookings.each do |booking| %>
-    <div>
-      <p><%= booking.room.room_name %></p>
-      <p><%= booking.start_time.strftime("%H:%M") %></p>
-      <p><%= booking.finish_time.strftime("%H:%M") %></p>
-      <p><%= booking.description %></p>
-    </div>
+  <% bookings.each do |booking| %>
+    <%=  booking.description %>
   <% end %>
 <% end %>
 
