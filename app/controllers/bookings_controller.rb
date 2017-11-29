@@ -9,6 +9,11 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)
   end
 
+  def month
+    @bookings = Booking.all
+    @rooms = Room.all
+  end
+
   def week
     @bookings = Booking.all
     @rooms = Room.all
