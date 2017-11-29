@@ -4,7 +4,7 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    # @bookings = Booking.all
+    @bookings = Booking.all
     @rooms = Room.all
     @selected_date = DateTime.now
     @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)

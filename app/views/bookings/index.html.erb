@@ -4,6 +4,18 @@
 <h2><%= @selected_date.strftime("%A, %d %B") %></h2>
 <%= link_to 'New Booking', new_booking_path %>
 
+<%= month_calendar events: @bookings do |date, bookings| %>
+  <%= date %>
+  <%= bookings.each do |booking| %>
+    <div>
+      <p><%= booking.room.room_name %></p>
+      <p><%= booking.start_time.strftime("%H:%M") %></p>
+      <p><%= booking.finish_time.strftime("%H:%M") %></p>
+      <p><%= booking.description %></p>
+    </div>
+  <% end %>
+<% end %>
+
 <h2><%= @date %></h2>
 <table>
   <thead>
