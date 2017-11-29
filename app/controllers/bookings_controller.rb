@@ -4,10 +4,10 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    # @bookings = Booking.all
     @rooms = Room.all
     @selected_date = DateTime.now
     @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)
+    @date_string = @selected_date.tomorrow
   end
 
   # GET /bookings/1
@@ -15,6 +15,13 @@ class BookingsController < ApplicationController
   def show
     @bookings = Booking.all
     @rooms = Room.all
+  end
+
+  def next
+    @next_date = params[:next_date]
+    @next_date = DateTime.parse(@next_date)
+    @bookings = Booking.where(:start_time => @next_date.beginning_of_day..@next_date.end_of_day)
+    @next_date = @next_date.tomorrow
   end
 
   # GET /bookings/new

@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :bookings, :rooms
   root to: 'bookings#index'
 
+  get '/next', to: 'bookings#next'
+
 end
