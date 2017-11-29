@@ -4,19 +4,13 @@
   <div class="field">
     <%= form.label :start_time %>
     <%= form.datetime_select :start_time, id: :booking_start_time, minute_step: 15 %>
-  </div>
 
-  <div class="field">
     <%= form.label :finish_time %>
     <%= form.datetime_select :finish_time, id: :booking_finish_time, minute_step: 15 %>
-  </div>
 
-  <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, id: :booking_description %>
-  </div>
 
-  <div class="field">
     <%= form.label :room_id %>
     <%= form.collection_select(:room_id, Room.all, :id, :room_name) %>
   </div>
