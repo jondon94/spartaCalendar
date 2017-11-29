@@ -3,16 +3,18 @@
   <head>
     <title>SpartaCalendar</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+
+
   <body>
     <nav>
-      <%= link_to 'Rooms', rooms_path %>
-      <%= link_to 'Bookings', bookings_path %>
+      <%= render "partials/navbar" %>
     </nav>
-    <%= yield %>
+    <main class="container-fluid">
+        <%= yield %>
+    </main>
   </body>
 </html>

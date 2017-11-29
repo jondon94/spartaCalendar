@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, id: :booking_start_time %>
+    <%= form.datetime_select :start_time, id: :booking_start_time, minute_step: 15 %>
   </div>
 
   <div class="field">
     <%= form.label :finish_time %>
-    <%= form.datetime_select :finish_time, id: :booking_finish_time %>
+    <%= form.datetime_select :finish_time, id: :booking_finish_time, minute_step: 15 %>
   </div>
 
   <div class="field">
@@ -27,13 +27,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.select :user_id, id: :booking_user_id %>
-  </div>
-
-  <div class="field">
     <%= form.label :room_id %>
-    <%= form.select :room_id, id: :booking_room_id %>
+    <%= form.collection_select(:room_id, Room.all, :id, :room_name) %>
   </div>
 
   <div class="actions">
