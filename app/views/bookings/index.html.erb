@@ -4,6 +4,9 @@
 <h2><%= @selected_date.strftime("%A, %d %B") %></h2>
 <%= link_to 'New Booking', new_booking_path %>
 
+<% start_date = params.fetch(:start_date, Date.today).to_date %>
+<% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week) %>
+
 <%= month_calendar events: @bookings do |date, bookings| %>
   <%= date %>
   <% bookings.each do |booking| %>
