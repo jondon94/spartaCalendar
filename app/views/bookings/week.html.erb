@@ -5,7 +5,9 @@
 <%= week_calendar events: @bookings do |date, bookings| %>
   <h4><%= date.strftime("%B, %d") %></h4>
   <% bookings.each do |booking| %>
-    <p><a href="#"><%= booking.room.room_name %></a></p>
-    <p><%= booking.description %></p>
+    <div class="booking">
+      <p><a href="#"><%= booking.room.room_name %></a></p>
+      <p><%= booking.description %></p>
+    </div>
   <% end %>
 <% end %>
