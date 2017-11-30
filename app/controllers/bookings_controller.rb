@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
     @rooms = Room.all
     @selected_date = DateTime.now
     @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)
-
     @timeNow = Time.now
     @startTime = @timeNow.beginning_of_day() + (8*60*60)
     @endTime = @timeNow.beginning_of_day() + (18*60*60)
@@ -58,8 +57,6 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
-
-
     respond_to do |format|
       if @booking.save
         format.html { redirect_to week_path, notice: 'Booking was successfully created.' }
@@ -75,7 +72,7 @@ class BookingsController < ApplicationController
   # PATCH/PUT /bookings/1.json
   def update
     respond_to do |format|
-      if @booking.update(booking_params)
+      if @booking.update(booking_params_update)
         format.html { redirect_to @booking, notice: 'Booking was successfully updated.' }
         format.json { render :show, status: :ok, location: @booking }
       else
@@ -103,6 +100,10 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.permit(:start_time, :finish_time, :description, :room_id, :room_name, :room_colour)
+      params.permit(:start_time, :finish_time, :description, :room_id, :room_colour)
+    end
+
+    def booking_params_update
+      params.require(:booking).permit(:start_time, :finish_time, :description, :room_id, :room_colour)
     end
 end
