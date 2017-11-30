@@ -18,11 +18,13 @@ class BookingsController < ApplicationController
   def month
     @bookings = Booking.all
     @rooms = Room.all
+    @room = Room.new
   end
 
   def week
     @bookings = Booking.all
     @rooms = Room.all
+    @room = Room.new
   end
 
   # GET /bookings/1
@@ -47,6 +49,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
+
 
     respond_to do |format|
       if @booking.save

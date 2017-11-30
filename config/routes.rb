@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   post '/month', to: 'bookings#create'
   post '/week', to: 'bookings#create'
 
+
 end
