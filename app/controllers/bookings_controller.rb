@@ -18,14 +18,12 @@ class BookingsController < ApplicationController
   def month
     @bookings = Booking.all
     @rooms = Room.all
-    @booking = Booking.new
     @room = Room.new
   end
 
   def week
     @bookings = Booking.all
     @rooms = Room.all
-    @booking = Booking.new
     @room = Room.new
   end
 
