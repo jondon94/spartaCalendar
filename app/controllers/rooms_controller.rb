@@ -30,10 +30,10 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to bookings_path, notice: 'Room was successfully created.' }
+        format.html { redirect_to week_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
-        format.html { render :new }
+        format.html { redirect_to week_path, notice: 'Room Already Exists'}
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end
     end

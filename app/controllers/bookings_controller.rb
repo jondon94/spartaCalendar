@@ -12,8 +12,8 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)
 
     @timeNow = Time.now
-    @startTime = @timeNow.beginning_of_day() + (9*60*60)
-    @endTime = @timeNow.beginning_of_day() + (17*60*60)
+    @startTime = @timeNow.beginning_of_day() + (8*60*60)
+    @endTime = @timeNow.beginning_of_day() + (18*60*60)
 
   end
 
@@ -24,6 +24,9 @@ class BookingsController < ApplicationController
   end
 
   def week
+    @start_date = params.fetch(:start_date, Date.today).to_date
+    @date_range = (@start_date..(@start_date)).to_a
+    @week_range = (@start_date.beginning_of_week..(@start_date.beginning_of_week+ 4.day)).to_a
     @timeNow = Time.now
     @startTime = @timeNow.beginning_of_day() + (8*60*60)
     @endTime = @timeNow.beginning_of_day() + (18*60*60)
@@ -59,10 +62,10 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to month_path, notice: 'Booking was successfully created.' }
+        format.html { redirect_to week_path, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: month_path }
       else
-        format.html { redirect_to month_path, notice: 'Booking overlaps with current booking' }
+        format.html { redirect_to week_path, notice: 'Booking overlaps with current booking' }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end

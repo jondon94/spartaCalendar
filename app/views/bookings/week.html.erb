@@ -1,30 +1,32 @@
-<div class="pageFormat">
-  <div class="bs-example">
-    <div class="panel-group" >
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">New Booking</a>
-          </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse">
-          <div class="panel-body">
-            <div class="form-bar">
-              <%= render 'bookings/form', booking: @booking %>
+<div class="form-fields">
+  <div class="pageFormat">
+    <div class="bs-example">
+      <div class="panel-group" >
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">New Booking</a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="form-bar">
+                <%= render 'bookings/form', booking: @booking %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">New Room</a>
-          </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse">
-          <div class="panel-body">
-            <div class="form-bar">
-              <%= render 'rooms/form', room: @room %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">New Room</a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="form-bar">
+                <%= render 'rooms/form', room: @room %>
+              </div>
             </div>
           </div>
         </div>
@@ -35,38 +37,16 @@
 
 <h3><%= @todaysDate.to_formatted_s(:long)  %></h3>
 
+<div class="calendarGrid">
+  <p id="notice"><%= notice %></p>
+  <%= week_calendar events: @bookings do |date, bookings| %>
+  <h4><%= date.strftime("%B, %d") %></h4>
+  <% bookings.each do |booking| %>
+  <div style="background-color:<%= booking.room.room_colour %>;">
+    <p><%= link_to booking.room.room_name, booking %></a></p>
+    <p><%= link_to booking.description, booking %></p>
+  </div>
+  <% end %>
+  <% end %>
 
-<table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Time</th>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% (0..40).each do |num| %>
-      <% num2 = (@startTime + (num*15*60)).to_s(:time) %>
-        <tr>
-          <td>
-            <%= (@startTime + (num*15*60)).to_s(:time)  %>
-          </td>
-          <% Date::DAYNAMES.each do |day| %>
-            <% @rooms.each do |room| %>
-              <% @bookings.each do |booking| %>
-              <% start = booking.start_time.strftime("%H:%M") %>
-              <% finish = booking.finish_time.strftime("%H:%M") %>
-              <% date = booking.start_time.strftime("%d.%m.%Y") %>
-              <% if num2 == start %>
-                <td>Working</td>
-              <% end %>
-              <% end %>
-            <% end %>
-          <% end %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+</div>
