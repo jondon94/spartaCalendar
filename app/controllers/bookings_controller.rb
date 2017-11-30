@@ -23,9 +23,13 @@ class BookingsController < ApplicationController
   end
 
   def week
+    @timeNow = Time.now
+    @startTime = @timeNow.beginning_of_day() + (8*60*60)
+    @endTime = @timeNow.beginning_of_day() + (18*60*60)
     @bookings = Booking.all
     @rooms = Room.all
     @room = Room.new
+    @todaysDate = Time.now
   end
 
   # GET /bookings/1
