@@ -56,12 +56,11 @@ textarea {
 .roomPage {
   margin-top: 52px;
 }
-//
-// .gridTitle {
-//   margin-top: 20px;
-// }
-//
-// .weekNav {
-//   position: fixed;
-//   margin-top: 0px;
-// }
+
+#room_index td{
+  padding-left: 20px;
+}
+
+#room_index th, td{
+  padding-left: 10px;
+}

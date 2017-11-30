@@ -17,7 +17,7 @@
       <tr class="gridTitle">
         <th class="dayTitle">Time</th>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.day_names')[day.wday] %></th>
+          <th><%= day.strftime("%A, %d %B") %></th>
         <% end %>
       </tr>
     </thead>
@@ -28,7 +28,7 @@
       <tr>
         <% date_range.each_slice(7) do |week| %>
         <td>
-          <%= time = (num + num2*0.15)%>
+          <h3><%= '%.2f' % time = (num + num2*0.15) %></h3>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
             <% block.call day, sorted_events.fetch(day, []) %>
