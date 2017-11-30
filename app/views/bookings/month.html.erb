@@ -37,7 +37,7 @@
 <h4><%= date.strftime("%B, %d") %></h4>
   <div class="booking">
     <% bookings.each do |booking| %>
-      <p><%=  booking.description %></p>
+      <p style="background-color:<%= booking.room.room_colour %>;"><%=  booking.description %></p>
     <% end %>
   </div>
 <% end %>

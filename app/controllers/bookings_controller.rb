@@ -10,6 +10,9 @@ class BookingsController < ApplicationController
     @rooms = Room.all
     @selected_date = DateTime.now
     @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)
+    @timeNow = Time.now
+    @startTime = @timeNow.beginning_of_day() + (8*60*60)
+    @endTime = @timeNow.beginning_of_day() + (18*60*60)
   end
 
   def month
@@ -93,6 +96,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.permit(:start_time, :finish_time, :description, :room_id)
+      params.permit(:start_time, :finish_time, :description, :room_id, :room_colour)
     end
 end
