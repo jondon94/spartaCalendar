@@ -34,6 +34,7 @@ class BookingsController < ApplicationController
     @rooms = Room.all
     @room = Room.new
     @todaysDate = Time.now
+    @width = 100/(Room.all.length)
   end
 
   # GET /bookings/1
