@@ -20,12 +20,12 @@
 </div>
 
 
-<% start_date = params.fetch(:start_date, Date.today).to_date %>
-<% date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week) %>
-
 <%= week_calendar events: @bookings do |date, bookings| %>
-  <%= date %>
+  <h4><%= date.strftime("%B, %d") %></h4>
   <% bookings.each do |booking| %>
-    <%=  booking.description %>
+    <div class="booking">
+          <p><%= link_to booking.room.room_name, booking %></a></p>
+          <p><%= booking.description %></p>
+    </div>
   <% end %>
 <% end %>
