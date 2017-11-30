@@ -33,7 +33,6 @@
   </div>
 </div>
 
-
 <%= week_calendar events: @bookings do |date, bookings| %>
   <h4><%= date.strftime("%B, %d") %></h4>
   <% bookings.each do |booking| %>
