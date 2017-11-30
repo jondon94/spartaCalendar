@@ -21,6 +21,9 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
     @rooms = Room.all
     @room = Room.new
+    if Room.all.length > 0
+      @width = 100/(Room.all.length)-1
+    end
   end
 
   def week
@@ -34,7 +37,9 @@ class BookingsController < ApplicationController
     @rooms = Room.all
     @room = Room.new
     @todaysDate = Time.now
-    @width = 100/(Room.all.length)
+    if Room.all.length > 0
+      @width = 100/(Room.all.length)
+    end
   end
 
   # GET /bookings/1

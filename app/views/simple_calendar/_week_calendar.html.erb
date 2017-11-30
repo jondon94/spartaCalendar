@@ -64,7 +64,7 @@
               <% @bookings.select {|b| b.start_time.to_date == day}.each do |booking| %>
                 <% if num2 >= booking.start_time.strftime("%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
                   <% room = Room.find(booking.room_id) %>
-                  <div style="float:left;height:30px; width:<%= @width %>%;background:<%= room.room_colour %>;"></div>
+                  <a href="/bookings/<%= booking.id %>"><div style="float:left;height:30px; width:<%= @width %>%;background:<%= room.room_colour %>;"></div></a>
                 <% else %>
                   <div style="float:left;height:30px; width:<%= @width %>%;"></div>
                 <% end %>
