@@ -1,19 +1,14 @@
 <%= form_with(model: booking, local: true) do |form| %>
-  <% if booking.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
 
-      <ul>
-      <% booking.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+  <div class="">
     <%= form.label :start_time %>
     <%= form.datetime_select :start_time, id: :booking_start_time, minute_step: 15 %>
+
+    <%= form.label :room_id %>
+    <%= form.collection_select(:room_id, Room.all, :id, :room_name) %>
+
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :booking_description %>
   </div>
 
   <div class="field">
@@ -21,17 +16,8 @@
     <%= form.datetime_select :finish_time, id: :booking_finish_time, minute_step: 15 %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :booking_description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :room_id %>
-    <%= form.collection_select(:room_id, Room.all, :id, :room_name) %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
+
 <% end %>
