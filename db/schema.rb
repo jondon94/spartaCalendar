@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127165355) do
+ActiveRecord::Schema.define(version: 20171130101919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.integer "room_id"
+    t.integer "user_id"
     t.text "description"
     t.datetime "start_time"
     t.datetime "finish_time"
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 20171127165355) do
     t.string "room_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "room_colour"
   end
 
   create_table "users", force: :cascade do |t|
