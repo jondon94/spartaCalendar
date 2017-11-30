@@ -23,9 +23,10 @@ body {
   background-color: #fafafa;
   font-size: 18px;
 }
-nav {
+.navbar {
   width: 100%;
   display: inline-block;
+  position: fixed;
 }
 
 .panel {
@@ -37,12 +38,26 @@ nav {
   padding-top: 7px;
 }
 
-.form-bar {
-}
-
-.field {
-}
-
 textarea {
   position: absolute;
 }
+
+.form-fields {
+  position: fixed;
+  margin-top: 52px;
+  width: 98%;
+  background-color: #ddd;
+}
+
+.calendarGrid {
+  margin-top: 170px;
+}
+//
+// .gridTitle {
+//   margin-top: 20px;
+// }
+//
+// .weekNav {
+//   position: fixed;
+//   margin-top: 0px;
+// }
