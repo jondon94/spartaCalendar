@@ -60,23 +60,19 @@
             <%= (@startTime + (num*15*60)).to_s(:time)  %>
           </td>
           <% @week_range.each do |day| %>
-                <td>
-
+            <td>
               <% @bookings.select {|b| b.start_time.to_date == day}.each do |booking| %>
                 <% if num2 >= booking.start_time.strftime("%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
-                  <div ><%= booking.description %></div>
+                  <% room = Room.find(booking.room_id) %>
+                  <a href="/bookings/<%= booking.id %>"><div style="float:left;height:30px; width:<%= @width %>%;background:<%= room.room_colour %>;"></div></a>
+                <% else %>
+                  <div style="float:left;height:30px; width:<%= @width %>%;"></div>
                 <% end %>
-
-
               <% end %>
-                </td>
-              <% end %>
-
-
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
-
-
 </div>
