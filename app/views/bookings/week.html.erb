@@ -23,9 +23,9 @@
 <%= week_calendar events: @bookings do |date, bookings| %>
   <h4><%= date.strftime("%B, %d") %></h4>
   <% bookings.each do |booking| %>
-    <div class="booking">
-          <p><%= link_to booking.room.room_name, booking %></a></p>
-          <p><%= booking.description %></p>
+    <div style="background-color:<%= booking.room.room_colour %>;">
+      <p><%= link_to booking.room.room_name, booking %></a></p>
+      <p><%= booking.description %></p>
     </div>
   <% end %>
 <% end %>
