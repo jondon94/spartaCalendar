@@ -28,15 +28,6 @@
             <%= (@startTime + (num*15*60)).to_s(:time)  %>
           </td>
           <% @week_range.each do |day| %>
-<<<<<<< HEAD
-          <td>
-            <% @bookings.select {|b| b.start_time.to_date == day}.each do |booking| %>
-              <% if num2 >= booking.start_time.strftime("%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
-                <div ><%= booking.description %></div>
-              <% end %>
-            <% end %>
-          </td>
-=======
             <td>
               <% @bookings.select {|b| b.start_time.to_date == day}.each do |booking| %>
                 <% if num2 >= booking.start_time.strftime("%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
@@ -47,7 +38,6 @@
                 <% end %>
               <% end %>
             </td>
->>>>>>> daniel-weekly-colour
           <% end %>
         </tr>
       <% end %>
