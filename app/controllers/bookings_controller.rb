@@ -23,6 +23,9 @@ class BookingsController < ApplicationController
   end
 
   def week
+    @start_date = params.fetch(:start_date, Date.today).to_date
+    @date_range = (@start_date..(@start_date)).to_a
+    @week_range = (@start_date.beginning_of_week..(@start_date.beginning_of_week+ 4.day)).to_a
     @timeNow = Time.now
     @startTime = @timeNow.beginning_of_day() + (8*60*60)
     @endTime = @timeNow.beginning_of_day() + (18*60*60)
