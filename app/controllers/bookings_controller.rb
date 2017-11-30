@@ -11,6 +11,9 @@ class BookingsController < ApplicationController
     @selected_date = DateTime.now
     @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)
 
+    @timeNow = Time.now
+    @startTime = @timeNow.beginning_of_day() + (9*60*60)
+    @endTime = @timeNow.beginning_of_day() + (17*60*60)
 
   end
 
@@ -21,9 +24,13 @@ class BookingsController < ApplicationController
   end
 
   def week
+    @timeNow = Time.now
+    @startTime = @timeNow.beginning_of_day() + (8*60*60)
+    @endTime = @timeNow.beginning_of_day() + (18*60*60)
     @bookings = Booking.all
     @rooms = Room.all
     @room = Room.new
+    @todaysDate = Time.now
   end
 
   # GET /bookings/1

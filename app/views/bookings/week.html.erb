@@ -33,12 +33,40 @@
   </div>
 </div>
 
-<%= week_calendar events: @bookings do |date, bookings| %>
-  <h4><%= date.strftime("%B, %d") %></h4>
-  <% bookings.each do |booking| %>
-    <div style="background-color:<%= booking.room.room_colour %>;">
-      <p><%= link_to booking.room.room_name, booking %></a></p>
-      <p><%= booking.description %></p>
-    </div>
-  <% end %>
-<% end %>
+<h3><%= @todaysDate.to_formatted_s(:long)  %></h3>
+
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% (0..40).each do |num| %>
+      <% num2 = (@startTime + (num*15*60)).to_s(:time) %>
+        <tr>
+          <td>
+            <%= (@startTime + (num*15*60)).to_s(:time)  %>
+          </td>
+          <% Date::DAYNAMES.each do |day| %>
+            <% @rooms.each do |room| %>
+              <% @bookings.each do |booking| %>
+              <% start = booking.start_time.strftime("%H:%M") %>
+              <% finish = booking.finish_time.strftime("%H:%M") %>
+              <% date = booking.start_time.strftime("%d.%m.%Y") %>
+              <% if num2 == start %>
+                <td>Working</td>
+              <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
