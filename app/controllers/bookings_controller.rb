@@ -56,7 +56,7 @@ class BookingsController < ApplicationController
         format.html { redirect_to month_path, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: month_path }
       else
-        format.html { render :new }
+        format.html { redirect_to month_path, notice: 'Booking overlaps with current booking' }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end
