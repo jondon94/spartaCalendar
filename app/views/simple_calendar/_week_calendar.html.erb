@@ -62,7 +62,7 @@
           <% @week_range.each do |day| %>
                 <td>
               <% @bookings.each do |booking| %>
-                <% if num2 > booking.start_time.strftime("1%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
+                <% if num2 >= booking.start_time.strftime("%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
                   <div ><%= booking.description %></div>
                 <% end %>
 
