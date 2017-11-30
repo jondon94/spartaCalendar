@@ -20,16 +20,18 @@
     </thead>
 
     <tbody>
-      <% (0..36).each do |num| %>
+      <% (8..18).each do |num| %>
+        <% (0..3).each do |num2| %>
       <tr>
+        <% date_range.each_slice(7) do |week| %>
         <td>
-          <%= (num*15*60).to_s %>
-          <% date_range.each_slice(7) do |week| %>
+          <%= time = (num + num2*0.15)%>
           <% week.each do |day| %>
-          <%= content_tag :td, class: calendar.td_classes_for(day) do %>
-          <% block.call day, sorted_events.fetch(day, []) %>
+            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
+            <% block.call day, sorted_events.fetch(day, []) %>
+            <% end %>
           <% end %>
-          <% end %>
+        <% end %>
           <% end %>
         </td>
       </tr>

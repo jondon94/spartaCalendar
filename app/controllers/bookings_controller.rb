@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     @timeNow = Time.now
     @startTime = @timeNow.beginning_of_day() + (8*60*60)
     @endTime = @timeNow.beginning_of_day() + (18*60*60)
+    
   end
 
   def month
