@@ -31,6 +31,10 @@ body {
   color: white;
 }
 
+.navbar-link {
+  color: white !important;
+}
+
 .panel {
   // background-color: #222;
   // color: #9d9d9d;
@@ -65,4 +69,8 @@ textarea {
 
 #room_index th, td{
   padding-left: 10px;
+}
+
+td {
+  padding: 0px !important;
 }
