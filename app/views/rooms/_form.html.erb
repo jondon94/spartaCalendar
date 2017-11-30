@@ -1,9 +1,13 @@
 <%= form_with(model: room, local: true) do |form| %>
 
-
   <div class="field">
     <%= form.label :room_name %>
     <%= form.text_field :room_name, id: :room_room_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :color %>
+    <%= form.color_field :color, id: :room_color, class: 'colorpicker' %>
   </div>
 
   <div class="actions">
