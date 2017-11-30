@@ -11,44 +11,13 @@
       <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
     </div>
   </div>
-
-  <!-- <table class="table table-striped">
-    <thead>
-      <tr class="gridTitle">
-        <th class="dayTitle">Time</th>
-        <% date_range.slice(0, 7).each do |day| %>
-          <th><%= day.strftime("%A, %d %B") %></th>
-        <% end %>
-      </tr>
-    </thead>
-
-    <tbody class="calendarBody">
-      <% (8..18).each do |num| %>
-        <% (0..3).each do |num2| %>
-      <tr>
-        <% date_range.each_slice(7) do |week| %>
-        <td>
-          <h3><%= '%.2f' % time = (num + num2*0.15) %></h3>
-          <% week.each do |day| %>
-            <%= content_tag :td, class: calendar.td_classes_for(day) do %>
-            <% block.call day, sorted_events.fetch(day, []) %>
-            <% end %>
-          <% end %>
-        <% end %>
-          <% end %>
-        </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table> -->
-
   <table class="table table-striped">
     <tr><h3><%= @todaysDate.to_formatted_s(:long)  %></h3></tr>
     <thead>
       <tr>
         <th>Time</th>
         <% @week_range.each do |day| %>
-          <th><%= day %></th>
+          <th><%= day.strftime("%A, %d %b") %></th>
         <% end %>
       </tr>
     </thead>
