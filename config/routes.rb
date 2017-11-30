@@ -5,4 +5,7 @@ Rails.application.routes.draw do
 
   get '/month', to: 'bookings#month'
   get '/week', to: 'bookings#week'
+  post '/month', to: 'bookings#create'
+  post '/week', to: 'bookings#create'
+
 end
