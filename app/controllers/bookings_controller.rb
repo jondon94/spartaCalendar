@@ -19,11 +19,13 @@ class BookingsController < ApplicationController
   def month
     @bookings = Booking.all
     @rooms = Room.all
+    @room = Room.new
   end
 
   def week
     @bookings = Booking.all
     @rooms = Room.all
+    @room = Room.new
   end
 
   # GET /bookings/1
@@ -49,12 +51,13 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
 
+
     respond_to do |format|
       if @booking.save
         format.html { redirect_to month_path, notice: 'Booking was successfully created.' }
         format.json { render :show, status: :created, location: month_path }
       else
-        format.html { render :new }
+        format.html { redirect_to month_path, notice: 'Booking overlaps with current booking' }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
       end
     end

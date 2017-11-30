@@ -4,13 +4,27 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <h4 class="panel-title">
-            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Booking Form</a>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">New Booking</a>
           </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse">
           <div class="panel-body">
             <div class="form-bar">
               <%= render 'bookings/form', booking: @booking %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">New Room</a>
+          </h4>
+        </div>
+        <div id="collapseTwo" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div class="form-bar">
+              <%= render 'rooms/form', room: @room %>
             </div>
           </div>
         </div>
