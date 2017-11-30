@@ -1,3 +1,25 @@
+<div class="pageFormat">
+  <div class="bs-example">
+    <div class="panel-group" >
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Booking Form</a>
+          </h4>
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+          <div class="panel-body">
+            <div class="form-bar">
+              <%= render 'bookings/form', booking: @booking %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <%= week_calendar events: @bookings do |date, bookings| %>
   <h4><%= date.strftime("%B, %d") %></h4>
   <% bookings.each do |booking| %>

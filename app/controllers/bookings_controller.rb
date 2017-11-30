@@ -4,6 +4,9 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
+    # @bookings = Booking.all
+    @booking = Booking.new
+    @room = Room.new
     @rooms = Room.all
     @selected_date = DateTime.now
     @bookings = Booking.where(:start_time => @selected_date.beginning_of_day..@selected_date.end_of_day)
@@ -44,8 +47,8 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       if @booking.save
-        format.html { redirect_to bookings_path, notice: 'Booking was successfully created.' }
-        format.json { render :show, status: :created, location: @booking }
+        format.html { redirect_to month_path, notice: 'Booking was successfully created.' }
+        format.json { render :show, status: :created, location: month_path }
       else
         format.html { render :new }
         format.json { render json: @booking.errors, status: :unprocessable_entity }
@@ -85,6 +88,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.require(:booking).permit(:start_time, :finish_time, :description, :room_id, :room_name)
+      params.permit(:start_time, :finish_time, :description, :room_id, :room_name)
     end
 end
