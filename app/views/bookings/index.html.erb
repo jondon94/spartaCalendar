@@ -5,20 +5,22 @@
 <%= link_to 'New Booking', new_booking_path %>
 
 <h2><%= @date %></h2>
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Room</th>
+      <th></th>
       <th>Start time</th>
       <th>Finish time</th>
       <th>Description</th>
-      <th colspan="5">Options</th>
+      <th>Options</th>
     </tr>
   </thead>
   <tbody>
     <% @bookings.each do |booking| %>
         <tr>
           <td><%= booking.room.room_name %></td>
+          <td style="background-color:<%= booking.room.room_colour %>; width: 30px;"></td>
           <td><%= booking.start_time.strftime("%H:%M") %></td>
           <td><%= booking.finish_time.strftime("%H:%M") %></td>
           <td><%= booking.description %></td>

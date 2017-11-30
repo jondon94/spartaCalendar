@@ -1,13 +1,20 @@
 <p id="notice"><%= notice %></p>
 
+<h1 class="roomPage">Booking</h1>
+
+<p>
+  <strong>Date:</strong>
+  <%= @booking.start_time.strftime("%A, %d") %>
+</p>
+
 <p>
   <strong>Start time:</strong>
-  <%= @booking.start_time %>
+  <%= @booking.start_time.strftime("%H:%M") %>
 </p>
 
 <p>
   <strong>Finish time:</strong>
-  <%= @booking.finish_time %>
+  <%= @booking.finish_time.strftime("%H:%M") %>
 </p>
 
 <p>
@@ -17,4 +24,5 @@
 
 
 <%= link_to 'Edit', edit_booking_path(@booking) %> |
-<%= link_to 'Back', bookings_path %>
+<%= link_to 'Back', bookings_path %> |
+<td><%= link_to 'Delete', @booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
