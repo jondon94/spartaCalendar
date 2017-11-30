@@ -15,11 +15,15 @@ class BookingsController < ApplicationController
   def month
     @bookings = Booking.all
     @rooms = Room.all
+    @booking = Booking.new
+    @room = Room.new
   end
 
   def week
     @bookings = Booking.all
     @rooms = Room.all
+    @booking = Booking.new
+    @room = Room.new
   end
 
   # GET /bookings/1
@@ -44,6 +48,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(booking_params)
+
 
     respond_to do |format|
       if @booking.save
@@ -88,6 +93,6 @@ class BookingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def booking_params
-      params.permit(:start_time, :finish_time, :description, :room_id, :room_name)
+      params.permit(:start_time, :finish_time, :description, :room_id)
     end
 end
