@@ -1,10 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-
-<h1>Today's Bookings</h1><br>
+<h1 class="roomPage">Today's Bookings</h1><br>
 <h2><%= @selected_date.strftime("%A, %d %B") %></h2>
 <%= link_to 'New Booking', new_booking_path %>
-
 
 <h2><%= @date %></h2>
 <table>
@@ -26,48 +24,10 @@
           <td><%= booking.description %></td>
           <td><%= link_to 'Show', booking %></td>
           <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-          <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
   </tbody>
 </table>
 <br>
 <p id="notice"><%= notice %></p>
-
-<h1>All Rooms & Bookings</h1>
-<%= link_to 'New Room', new_room_path %>
-
-<% @rooms.each do |room| %>
-<br>
-<h3>
-  <%= room.room_name %>
-</h3>
-<table>
-  <thead>
-    <tr>
-      <td><h4>Date</h4></td>
-      <td><h4>Start Time</h4></td>
-      <td><h4>Finish Time</h4></td>
-      <td><h4>Description</h4></td>
-      <td colspan="5"><h4>Options</h4></td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% room.bookings.each do |booking| %>
-      <tr>
-        <td><%= booking.start_time.strftime("%d %B") %></td>
-        <td><%= booking.start_time.strftime("%H:%M") %></td>
-        <td><%= booking.finish_time.strftime("%H:%M") %></td>
-        <td><%= booking.description %></td>
-        <td><%= link_to 'Show', booking %></td>
-        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
-<% end %>
-
-<br>

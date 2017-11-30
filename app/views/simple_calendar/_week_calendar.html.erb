@@ -1,18 +1,17 @@
 <div class="simple-calendar">
-
   <div class="weekNav">
     <div class="calendar-heading">
       <%= link_to t('simple_calendar.previous', default: 'Previous Week'), calendar.url_for_previous_view %>
       <% if calendar.number_of_weeks == 1 %>
-      <span class="calendar-title">Week <%= calendar.week_number %></span>
+        <span class="calendar-title">Week <%= calendar.week_number %></span>
       <%else%>
-      <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
+        <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
       <%end%>
-      <%= link_to t('simple_calendar.next', default: 'Next Page'), calendar.url_for_next_view %>
+      <%= link_to t('simple_calendar.next', default: 'Next Week'), calendar.url_for_next_view %>
     </div>
   </div>
   <table class="table table-striped">
-    <tr><h3><%= @todaysDate.to_formatted_s(:long)  %></h3></tr>
+    <tr><h3><%= @todaysDate.to_formatted_s(:long)%></h3></tr>
     <thead>
       <tr>
         <th>Time</th>
@@ -23,29 +22,22 @@
     </thead>
     <tbody>
       <% (0..40).each do |num| %>
-      <% num2 = (@startTime + (num*15*60)).to_s(:time) %>
+        <% num2 = (@startTime + (num*15*60)).to_s(:time) %>
         <tr>
           <td>
             <%= (@startTime + (num*15*60)).to_s(:time)  %>
           </td>
           <% @week_range.each do |day| %>
-                <td>
-
-              <% @bookings.select {|b| b.start_time.to_date == day}.each do |booking| %>
-                <% if num2 >= booking.start_time.strftime("%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
-                  <div ><%= booking.description %></div>
-                <% end %>
-
-
+          <td>
+            <% @bookings.select {|b| b.start_time.to_date == day}.each do |booking| %>
+              <% if num2 >= booking.start_time.strftime("%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
+                <div ><%= booking.description %></div>
               <% end %>
-                </td>
-              <% end %>
-
-
+            <% end %>
+          </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
   </table>
-
-
 </div>
