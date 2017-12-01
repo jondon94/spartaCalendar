@@ -1,14 +1,13 @@
 <div class="simple-calendar">
-
-  <div class="todayDate">
+  <div class="weekNav">
     <div class="calendar-heading">
-      <%= link_to t('simple_calendar.previous', default: 'Yesterday'), calendar.url_for_previous_view %>
+      <%= link_to t('simple_calendar.previous', default: 'Previous Week'), calendar.url_for_previous_view %>
       <% if calendar.number_of_weeks == 1 %>
-      <span class="calendar-title">Week <%= calendar.week_number %></span>
+        <span class="calendar-title">Week <%= calendar.week_number %></span>
       <%else%>
-      <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
+        <span class="calendar-title">Week <%= calendar.week_number %> - <%= calendar.end_week %></span>
       <%end%>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+      <%= link_to t('simple_calendar.next', default: 'Next Week'), calendar.url_for_next_view %>
     </div>
   </div>
 
@@ -18,13 +17,13 @@
       <tr class="weekGrid">
         <th class="weekTopBar">Time</th>
         <% @week_range.each do |day| %>
-          <th class="weekTopBar"><%= day %></th>
+          <th class="weekTopBar"><%= day.strftime("%A, %d %b") %></th>
         <% end %>
       </tr>
     </thead>
     <tbody>
       <% (0..40).each do |num| %>
-      <% num2 = (@startTime + (num*15*60)).to_s(:time) %>
+        <% num2 = (@startTime + (num*15*60)).to_s(:time) %>
         <tr>
           <td class="weekTab">
             <%= (@startTime + (num*15*60)).to_s(:time)  %>

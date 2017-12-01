@@ -2,15 +2,18 @@
 
 <p class="roomPage">
   <strong>Room name:</strong>
-  <%= @room.room_name %>
+  <div style="background-color:<%= @room.room_colour %>; width: 10%;"><%= @room.room_name %></div>
 </p>
 
+<<<<<<< HEAD
 <p>
   <strong>Room colour:</strong>
   <div style="background-color:<%= @room.room_colour %>;">
     e l o
   </div>
 </p>
+=======
+>>>>>>> dev
 
 
 <%= link_to 'Edit', edit_room_path(@room) %> |
