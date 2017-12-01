@@ -41,7 +41,7 @@
   <h4><%= date.strftime("%B, %d") %></h4>
   <div class="booking">
     <% bookings.each do |booking| %>
-    <a href="/week/<%= booking.id %>">
+    <a href="/bookings/<%= booking.id %>">
     <div class="month-div" style="float:left;background:<%= booking.room.room_colour %>; width:<%= @width %>%; height:20px;margin-right:1%;">
     </div></a>
     <% end %>
