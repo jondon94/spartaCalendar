@@ -1,6 +1,6 @@
 <div class="simple-calendar">
 
-  <div class="weekNav">
+  <div class="todayDate">
     <div class="calendar-heading">
       <%= link_to t('simple_calendar.previous', default: 'Yesterday'), calendar.url_for_previous_view %>
       <% if calendar.number_of_weeks == 1 %>
@@ -13,16 +13,16 @@
   </div>
 
   <table class="table table-striped">
-    <tr><h3><%= @todaysDate.to_formatted_s(:long)  %></h3></tr>
+    <tr><h3 class="weekNav"><%= @todaysDate.to_formatted_s(:long)  %></h3></tr>
     <thead>
-      <tr>
-        <th>Time</th>
+      <tr class="weekGrid">
+        <th class="weekTopBar">Time</th>
         <% @week_range.each do |day| %>
-          <th><%= day %></th>
+          <th class="weekTopBar"><%= day %></th>
         <% end %>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="weekTab">
       <% (0..40).each do |num| %>
       <% num2 = (@startTime + (num*15*60)).to_s(:time) %>
         <tr>
