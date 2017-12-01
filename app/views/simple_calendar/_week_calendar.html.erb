@@ -34,15 +34,11 @@
 
               <% @bookings.select {|b| b.start_time.to_date == day}.each do |booking| %>
                 <% if num2 >= booking.start_time.strftime("%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
-                  <div ><%= link_to booking.description, booking %></div>
+                  <div class="gridView"><%= link_to booking.description, booking %></div>
                 <% end %>
-
-
               <% end %>
                 </td>
               <% end %>
-
-
         </tr>
       <% end %>
     </tbody>
