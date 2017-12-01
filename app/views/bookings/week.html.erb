@@ -33,37 +33,16 @@
       </div>
     </div>
   </div>
-</div><p id="notice"><%= notice %></p>
+</div>
 
-<h1 class="calendarGrid">Today's Bookings</h1><br>
-<h2><%= @selected_date.strftime("%A, %d %B") %></h2>
 
-<h2><%= @date %></h2>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Room</th>
-      <th></th>
-      <th>Start time</th>
-      <th>Finish time</th>
-      <th>Description</th>
-      <th>Options</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @bookings.each do |booking| %>
-        <tr>
-          <td><%= booking.room.room_name %></td>
-          <td style="background-color:<%= booking.room.room_colour %>; width: 30px;"></td>
-          <td><%= booking.start_time.strftime("%H:%M") %></td>
-          <td><%= booking.finish_time.strftime("%H:%M") %></td>
-          <td><%= booking.description %></td>
-          <td><%= link_to 'Show', booking %></td>
-          <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-          <td><%= link_to 'Delete', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-  </tbody>
-</table>
-<br>
-<p id="notice"><%= notice %></p>
+<div class="">
+  <div class="calendarGrid">
+    <!-- <p id="notice"><%= notice %></p> -->
+    <%= week_calendar events: @bookings do |date, bookings| %>
+    <h4 class="weekNav"><%= date.strftime("%B, %d") %></h4>
+    <% end %>
+
+  </div>
+
+</div>

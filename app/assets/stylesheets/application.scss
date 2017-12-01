@@ -13,16 +13,91 @@
  *= require_tree .
  *= require_self
  *= require jquery-ui
- *= require fullcalendar
+ *= require simple_calendar
+ *= require bootstrap-datepicker3
  */
  @import 'bootstrap-sprockets';
- @import "bootstrap";
+ @import 'bootstrap';
+
+
 
 body {
   background-color: #fafafa;
   font-size: 18px;
 }
-nav {
+.navbar {
   width: 100%;
   display: inline-block;
+  position: fixed;
+    z-index: 1;
+}
+
+.panel {
+  // background-color: #222;
+  // color: #9d9d9d;
+  border-width: 0px;
+  font-weight: 300;
+  font-size: 18px;
+  padding-top: 7px;
+  z-index: 1;
+}
+
+textarea {
+  position: absolute;
+}
+
+.form-fields {
+  position: fixed;
+  margin-top: 52px;
+  width: 98%;
+  background-color: #ddd;
+  z-index: 2;
+}
+
+.calendarGrid {
+  margin-top: 200px;
+}
+
+.showPage {
+  margin-top: 52px;
+}
+
+.roomPage {
+  margin-top: 52px;
+}
+
+#room_index td{
+  padding-left: 20px;
+}
+
+#room_index th, td{
+  padding-left: 10px;
+}
+
+.weekGrid {
+  z-index: 2;
+}
+
+.weekNav {
+  padding-top: 20px;
+  margin-top: 0px;
+  z-index: 1;
+  margin-left: 10px;
+}
+
+.weekTopBar {
+  width: 235px;
+  background-color: white;
+  z-index: 3;
+  margin-top: 50px;
+}
+
+
+
+.navbar-brand {
+  float: left;
+  padding: 5px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
 }

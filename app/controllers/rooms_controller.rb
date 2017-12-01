@@ -5,6 +5,8 @@ class RoomsController < ApplicationController
   # GET /rooms.json
   def index
     @rooms = Room.all
+    @booking = Booking.new
+
   end
 
   # GET /rooms/1
@@ -28,10 +30,10 @@ class RoomsController < ApplicationController
 
     respond_to do |format|
       if @room.save
-        format.html { redirect_to bookings_path, notice: 'Room was successfully created.' }
+        format.html { redirect_to week_path, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else
-        format.html { render :new }
+        format.html { redirect_to week_path, notice: 'Room Already Exists'}
         format.json { render json: @room.errors, status: :unprocessable_entity }
       end
     end
@@ -69,6 +71,6 @@ class RoomsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def room_params
-      params.require(:room).permit(:room_name)
+      params.require(:room).permit(:room_name, :room_colour)
     end
 end
