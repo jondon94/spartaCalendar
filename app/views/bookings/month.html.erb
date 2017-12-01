@@ -38,11 +38,13 @@
 <div class="calendarGrid">
   <p id="notice"><%= notice %></p>
   <%= month_calendar events: @bookings do |date, bookings| %>
-  <h4><%= date.strftime("%B, %d") %></h4>
+  <a href="/week">
+  <h4><%= date.strftime("%B, %d") %></h4></a>
   <div class="booking">
     <% bookings.each do |booking| %>
+    <a href="/bookings/<%= booking.id %>">
     <div class="month-div" style="float:left;background:<%= booking.room.room_colour %>; width:<%= @width %>%; height:20px;margin-right:1%;">
-    </div>
+    </div></a>
     <% end %>
   </div>
   <% end %>
