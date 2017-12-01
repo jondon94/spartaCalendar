@@ -14,9 +14,11 @@
  *= require_self
  *= require jquery-ui
  *= require simple_calendar
+ *= require bootstrap-datepicker3
  */
  @import 'bootstrap-sprockets';
  @import 'bootstrap';
+
 
 
 body {
@@ -27,12 +29,7 @@ body {
   width: 100%;
   display: inline-block;
   position: fixed;
-  background-color: #01181b;
-  color: white;
-}
-
-.navbar-link {
-  color: white !important;
+    z-index: 1;
 }
 
 .panel {
@@ -42,6 +39,7 @@ body {
   font-weight: 300;
   font-size: 18px;
   padding-top: 7px;
+  z-index: 1;
 }
 
 textarea {
@@ -53,10 +51,15 @@ textarea {
   margin-top: 52px;
   width: 98%;
   background-color: #ddd;
+  z-index: 2;
 }
 
 .calendarGrid {
-  margin-top: 170px;
+  margin-top: 157px;
+}
+
+.showPage {
+  margin-top: 52px;
 }
 
 .roomPage {
@@ -69,4 +72,32 @@ textarea {
 
 #room_index th, td{
   padding-left: 10px;
+}
+
+.weekGrid {
+  z-index: 2;
+}
+
+.weekNav {
+  padding-top: 20px;
+  margin-top: 0px;
+  z-index: 1;
+  margin-left: 10px;
+}
+
+.weekTopBar {
+  width: 235px;
+  background-color: white;
+  z-index: 3;
+  margin-top: 50px;
+}
+
+
+
+.navbar-brand {
+  float: left;
+  padding: 5px 15px;
+  font-size: 18px;
+  line-height: 20px;
+  height: 50px;
 }

@@ -35,18 +35,14 @@
   </div>
 </div>
 
-<h3><%= @todaysDate.to_formatted_s(:long)  %></h3>
 
-<div class="calendarGrid">
-  <p id="notice"><%= notice %></p>
-  <%= week_calendar events: @bookings do |date, bookings| %>
-  <h4><%= date.strftime("%B, %d") %></h4>
-  <% bookings.each do |booking| %>
-  <div style="background-color:<%= booking.room.room_colour %>;">
-    <p><%= link_to booking.room.room_name, booking %></a></p>
-    <p><%= link_to booking.description, booking %></p>
+<div class="">
+  <div class="calendarGrid">
+    <!-- <p id="notice"><%= notice %></p> -->
+    <%= week_calendar events: @bookings do |date, bookings| %>
+    <h4 class="weekNav"><%= date.strftime("%B, %d") %></h4>
+    <% end %>
+
   </div>
-  <% end %>
-  <% end %>
 
 </div>

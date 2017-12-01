@@ -1,73 +1,69 @@
-<p id="notice"><%= notice %></p>
+<div class="form-fields">
+  <div class="pageFormat">
+    <div class="bs-example">
+      <div class="panel-group" >
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">New Booking</a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="form-bar">
+                <%= render 'bookings/form', booking: @booking %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">New Room</a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="form-bar">
+                <%= render 'rooms/form', room: @room %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><p id="notice"><%= notice %></p>
 
-
-<h1>Today's Bookings</h1><br>
+<h1 class="calendarGrid">Today's Bookings</h1><br>
 <h2><%= @selected_date.strftime("%A, %d %B") %></h2>
-<%= link_to 'New Booking', new_booking_path %>
-
 
 <h2><%= @date %></h2>
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Room</th>
+      <th></th>
       <th>Start time</th>
       <th>Finish time</th>
       <th>Description</th>
-      <th colspan="5">Options</th>
+      <th>Options</th>
     </tr>
   </thead>
   <tbody>
     <% @bookings.each do |booking| %>
         <tr>
           <td><%= booking.room.room_name %></td>
+          <td style="background-color:<%= booking.room.room_colour %>; width: 30px;"></td>
           <td><%= booking.start_time.strftime("%H:%M") %></td>
           <td><%= booking.finish_time.strftime("%H:%M") %></td>
           <td><%= booking.description %></td>
           <td><%= link_to 'Show', booking %></td>
           <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-          <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
   </tbody>
 </table>
 <br>
 <p id="notice"><%= notice %></p>
-
-<h1>All Rooms & Bookings</h1>
-<%= link_to 'New Room', new_room_path %>
-
-<% @rooms.each do |room| %>
-<br>
-<h3>
-  <%= room.room_name %>
-</h3>
-<table>
-  <thead>
-    <tr>
-      <td><h4>Date</h4></td>
-      <td><h4>Start Time</h4></td>
-      <td><h4>Finish Time</h4></td>
-      <td><h4>Description</h4></td>
-      <td colspan="5"><h4>Options</h4></td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% room.bookings.each do |booking| %>
-      <tr>
-        <td><%= booking.start_time.strftime("%d %B") %></td>
-        <td><%= booking.start_time.strftime("%H:%M") %></td>
-        <td><%= booking.finish_time.strftime("%H:%M") %></td>
-        <td><%= booking.description %></td>
-        <td><%= link_to 'Show', booking %></td>
-        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-        <td><%= link_to 'Destroy', booking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
-<% end %>
-
-<br>
