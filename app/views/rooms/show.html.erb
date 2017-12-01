@@ -2,19 +2,14 @@
 
 <p class="roomPage">
   <strong>Room name:</strong>
-  <div style="background-color:<%= @room.room_colour %>; width: 10%;"><%= @room.room_name %></div>
+  <div style=" width: 10%;"><%= @room.room_name %></div>
 </p>
 
-<<<<<<< HEAD
 <p>
   <strong>Room colour:</strong>
-  <div style="background-color:<%= @room.room_colour %>;">
-    e l o
+  <div style="background-color:<%= @room.room_colour %>; width: 70px; height: 30px;">
   </div>
 </p>
-=======
->>>>>>> dev
-
 
 <%= link_to 'Edit', edit_room_path(@room) %> |
 <%= link_to 'Back', bookings_path %> |
