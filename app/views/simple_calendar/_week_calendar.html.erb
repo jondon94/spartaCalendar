@@ -30,7 +30,7 @@
             <%= (@startTime + (num*15*60)).to_s(:time)  %>
           </td>
           <% @week_range.each do |day| %>
-            <td>
+            <td class="gridView">
               <% @bookings.select {|b| b.start_time.to_date == day}.each do |booking| %>
                 <% if num2 >= booking.start_time.strftime("%H:%M") && num2 < booking.finish_time.strftime("%H:%M")%>
                   <% room = Room.find(booking.room_id) %>

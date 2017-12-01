@@ -87,13 +87,6 @@ textarea {
   z-index: 2;
 }
 
-.weekTab {
-  position: fixed;
-  position: absolute;
-  margin-top: 40px;
-  z-index: -1;
-}
-
 .todayDate {
   float: right;
   position: fixed;
@@ -102,9 +95,4 @@ textarea {
   background-color: white;
   width: 100%;
   height: 60px;
-}
-
-.gridView {
-  width: 200px;
-  margin-top: 0px;
 }
